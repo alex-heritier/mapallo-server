@@ -9,9 +9,22 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
+# development:
+#   <<: *default
+#   database: db/development.sqlite3
 development:
-  <<: *default
-  database: db/development.sqlite3
+  adapter: postgresql
+  pool: 5
+  port: 5432
+  reaping_frequency: 50
+  sslmode: require
+  checkout_timeout: 20
+  host: /tmp/cloudsql/serene-voltage-253823:us-west2:mapallo-test
+  database: mapallo_test_db
+  username: mapallo
+  password: Zse45tgb
+  min_messages: warning
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -20,6 +33,19 @@ test:
   <<: *default
   database: db/test.sqlite3
 
-production:
-  <<: *default
-  database: db/production.sqlite3
+# production:
+#   <<: *default
+#   database: db/production.sqlite3
+
+production: &production
+  adapter: postgresql
+  pool: 5
+  port: 5432
+  reaping_frequency: 50
+  sslmode: require
+  checkout_timeout: 20
+  host: /cloudsql/serene-voltage-253823:us-west2:mapallo-test
+  database: mapallo_test_db
+  username: mapallo
+  password: Zse45tgb
+  min_messages: warning

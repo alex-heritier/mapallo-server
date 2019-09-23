@@ -1,0 +1,12 @@
+runtime: ruby25
+env: standard
+
+beta_settings:
+  # The connection name of your instance on its Overview page in the Google
+  # Cloud Platform Console, or use `[YOUR_PROJECT_ID]:[YOUR_REGION]:[YOUR_INSTANCE_NAME]`
+  cloud_sql_instances: serene-voltage-253823:us-west2:mapallo-test
+
+env_variables:
+  SECRET_KEY_BASE: db1ec1af2ed183b2337454ca9e94e530f228a292fa49548914e95536026a0935e6e1fa3115b640f824c6fd3e03a5fe7f5f55b9fbf4c94f38a4a18e576466c114
+  RAILS_ENV: production
+  RAILS_SERVE_STATIC_FILES: false
