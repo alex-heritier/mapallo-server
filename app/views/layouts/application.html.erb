@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Mapallo</title>
+    <title><%= yield(:title).present? ? yield(:title) : 'Mapallo' %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
