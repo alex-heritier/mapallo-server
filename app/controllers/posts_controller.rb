@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  def index
+    posts = Post.all.includes(:user, :pin).as_json(include: [user: { only: [:username] }, pin: { only: %i[lat lng] }])
+    render json: { req_stat: 100, posts: posts }
+  end
+
   def create
     title = params[:title]
     text = params[:text]
