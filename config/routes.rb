@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   root 'static#landing'
 
   resources :users
+  resources :posts
+  resources :pins
 
   post 'login', to: 'auth#login'
   post 'signup', to: 'auth#signup'

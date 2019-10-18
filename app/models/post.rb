@@ -2,20 +2,17 @@
 
 # == Schema Information
 #
-# Table name: users
+# Table name: posts
 #
 #  id         :bigint           not null, primary key
-#  username   :string
+#  user_id    :integer
+#  title      :text
+#  text       :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class User < ApplicationRecord
-  validates_uniqueness_of :username
-
-  has_one :login
-
-  has_many :tokens
-  has_many :posts
-  has_many :pins
+class Post < ApplicationRecord
+  belongs_to :user
+  has_one :pin, as: :pinnable
 end
