@@ -15,5 +15,9 @@ class Login < ApplicationRecord
   validates_uniqueness_of :user_id
   validates_presence_of :user_id
 
-  belongs_to :user, optional: true
+  belongs_to :user
+
+  def self.encrypt_password(password)
+    password
+  end
 end
