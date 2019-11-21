@@ -3,6 +3,13 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Stackdriver Error Reporting specific parameters
+  begin
+    config.google_cloud.error_reporting.project_id = 'serene-voltage-253823'
+    config.google_cloud.error_reporting.keyfile    = 'serene-voltage-253823-9e89fb6aecb4.json'
+  rescue StandardError
+  end
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
