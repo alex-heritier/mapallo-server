@@ -9,9 +9,17 @@ class PostsController < ApplicationController
   def create
     title = params[:title]
     text = params[:text]
+    image64 = params[:image_64]
     lat_lng = params[:lat_lng] || {}
     lat = lat_lng['lat'] || params[:lat]
     lng = lat_lng['lng'] || params[:lng]
+
+    if image64.present?
+      FileHelper.save_base64(
+        filename: "#{title.parameterize}.jpg",
+        base64: image64
+      )
+    end
 
     # Validate params
     if title.blank? || text.blank? || lat.blank? || lng.blank?
